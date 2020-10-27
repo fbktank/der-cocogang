@@ -13,7 +13,7 @@ a repo of various tools for Cocogangers
  
 # cocojoke
 
-Barbara chan, Shirakami Fubuki, and Kiryu Coco were all lost in the desert. They found a lamp and rubbed it. A genie popped out and granted them each one wish. Barbara chan wished to be back home. Poof! She was back home. Shirakami Fubuki wished to get one million simps. Poof! Everyone knows she's a tank, or at least her stuntman is a tank. Kiryu Coco said, "FUCK U and never come back! "
+Barbara chan, Shirakami Fubuki, and Kiryu Coco were all lost in the desert. They found a lamp and rubbed it. A genie popped out and granted them each one wish. Barbara chan wished to be back home. Poof! She was back home. Shirakami Fubuki wished to get one million simps. Poof! Everyone knows she's a tank, or at least her nakanojin is a tank. Kiryu Coco said, "FUCK U and never come back! "
 
 # cocoloverjoke
 
