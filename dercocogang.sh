@@ -1,20 +1,20 @@
 #!/bin/bash
 # copyrekt Shirakami Fubuki class Main Battle Tank 2020
-# kiryu coco youtube channel chatbot
+# kiryu coco youtube channel chatbot (hakushin
 # "Fuck you and never come back! " ---- Kiryu Coco, idk-2020
 
 ######################################################################################################################################################################
 function sendmessage() {
-    message="$1"
+    message=`echo $1 | sed 's/"/\\\\"/g'`
     [ "$randomchannel" ] && channelno=$((RANDOM%$channels)) || channelno=$((totalmessagesent%$channels))
     finalchannel="${channel["$channelno"]}"
     auth=`echo "$finalchannel" | sed "s/'/\n/g" | grep "Authorization: " | sed 's/Authorization: //g'`
     cookie=`echo "$finalchannel" | sed "s/'/\n/g" | grep "Cookie: " | sed 's/Cookie: //g'`
     onbehalfofuser=`echo "$finalchannel" | sed "s/,/\n/g" | grep '"onBehalfOfUser"' | grep -Eo "[0-9]*"`
     params=`echo "$finalchannel" | sed "s/,/\n/g" | grep '"params"' | sed 's/"params":"//g' | sed 's/"$//g'`
-    echo "channel $channelno sendin' message \"$message\""
+    echo -e "channel \033[36m$channelno\033[0m sendin' message \"\033[32m$message\033[0m\""
     curl 'https://www.youtube.com/youtubei/v1/live_chat/send_message?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8' -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0' -H 'Accept: */*' -H 'Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2' --compressed -H 'Content-Type: application/json' -H "Authorization: $auth" -H 'X-Origin: https://www.youtube.com' -H 'Origin: https://www.youtube.com' -H 'Connection: keep-alive' -H "Cookie: $cookie" -H 'TE: Trailers' --data "{\"context\":{\"client\":{ \"clientName\":\"WEB\",\"clientVersion\":\"2.20201023.02.00\"},\"request\":{ },\"user\":{ \"onBehalfOfUser\":\"""$onbehalfofuser""\"}},\"params\":\"""$params""\",\"richMessage\":{ \"textSegments\":[{\"text\":\"""$message""\"}]}}" >/dev/null 2>&1
-    echo "channel $channelno finished sendin' message"
+    echo -e "channel \033[36m$channelno\033[0m finished sendin' message"
     echo
     let totalmessagesent+=1
     sleep "$interval"
@@ -43,7 +43,8 @@ function cocojoke() {
     sendmessage "$cutie1 chan wished to be back home. P o o f! She was back home. "
     sendmessage "$cutie2 chan wished to be at home with her family. P o o f! "
     sendmessage "She was back home with her family. ${villains["$villian"]} said, "
-    sendmessage "\\\"${villainquotes["$villian"]}\\\":cocobitte:"
+    # sendmessage "\\\"${villainquotes["$villian"]}\\\":cocobitte:"
+    sendmessage "\"${villainquotes["$villian"]}\":cocobitte:"
 }
 
 OLD_IFS=$IFS
@@ -95,7 +96,7 @@ do
             ;;
         -h | -H | --help)
             echo "copyrekt Shirakami Fubuki class Main Battle Tank 2020"
-            echo "kiryu coco youtube channel chatbot"
+            echo "kiryu coco youtube channel chatbot (hakushin"
             echo
             echo "Usage: "
             echo "./dercocogang.sh [options] channelsfile linesfile"
@@ -145,7 +146,7 @@ then
     done
 fi
 
-[ "$cocojoke" ] && echo "Found $channels channel(s)" || echo "Found $lines line(s) and $channels channel(s)"
+[ "$cocojoke" ] && echo -e "Found \033[36m$channels\033[0m channel(s)" || echo -e "Found \033[36m$lines\033[0m line(s) and \033[36m$channels\033[0m channel(s)"
 
 while true
 do
